@@ -15,10 +15,12 @@ if (diffSelector == 1) {
     containerElement.style.width = "700px"
 }
 
+
+
 function createGrid(cell_number) {
     for (let i = 1; i <= cell_number; i++) {
         let gridElement = document.createElement("div");
-        gridElement.className = "grid_cell"
+        gridElement.className = `grid_cell--${i}`
         gridElement.innerHTML = i
         containerElement.append(gridElement)
 
@@ -26,10 +28,12 @@ function createGrid(cell_number) {
 
             this.classList.add("clicked")
 
+            const cellReader = document.getElementsByClassName(`grid_cell--${i}`);
+            console.log(cellReader);
+
         })
     }
 }
-
 
 function createBomb(cell_number) {
     let bombs = []
@@ -45,7 +49,19 @@ function createBomb(cell_number) {
     return bombs;
 }
 
-createGrid(cell_number)
 
-createBomb(cell_number)
+
+function iaABomb(cell_numebers, bombs) {
+    if (bombs.includes(cell)) {
+        console.log("fine");
+    } else {
+        console.log("continua a giocare");
+    }
+}
+
+createGrid(cell_number);
+
+const bombs = createBomb(cell_number);
+
+console.log(bombs);
 
