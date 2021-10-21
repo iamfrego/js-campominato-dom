@@ -26,10 +26,14 @@ function createGrid(cell_number) {
 
         gridElement.addEventListener("click", function () {
 
-            this.classList.add("clicked")
 
-            const cellReader = document.getElementsByClassName(`grid_cell--${i}`);
+            const cellReader = parseInt(gridElement.innerHTML);
             console.log(cellReader);
+            if (isABomb(cellReader, bombs)) {
+                this.style.backgroundColor = "red";
+            } else {
+                this.style.backgroundColor = "#99CBFF";
+            }
 
         })
     }
@@ -50,18 +54,20 @@ function createBomb(cell_number) {
 }
 
 
-
-function iaABomb(cell_numebers, bombs) {
-    if (bombs.includes(cell)) {
-        console.log("fine");
+function isABomb(cellReader, bombs) {
+    if (bombs.includes(cellReader)) {
+        return true
     } else {
-        console.log("continua a giocare");
+        return false;
     }
 }
 
-createGrid(cell_number);
+
 
 const bombs = createBomb(cell_number);
+
+createGrid(cell_number);
+
 
 console.log(bombs);
 
