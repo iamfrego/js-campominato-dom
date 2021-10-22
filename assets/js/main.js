@@ -21,8 +21,11 @@ if (diffSelector == 1) {
 let winCounter = 0;
 //array di bombe
 const bombsInGrid = createBomb(cell_number);
+//winStreak
+let winStreak = cell_number - bombsInGrid.length;
 //crea griglia
 createGrid(cell_number);
+
 
 console.log(bombsInGrid);
 
@@ -60,6 +63,11 @@ function createGrid(cell_number) {
                 //SE NON è UNA BOMBA
                 this.style.backgroundColor = "#99CBFF";
                 winCounter++;
+
+                if (winCounter == winStreak) {
+                    document.querySelector(`.results`).innerHTML = `HAI VINTO`;
+                }
+
                 console.log(winCounter);
             }
         })
